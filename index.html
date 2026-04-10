@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="library.css">
+</head>
+<body>
+    <div class='container'>
+        
+        <div class="masthead">
+            <h1 id="title">library</h1>
+
+        </div> 
+        <div class="left-container">
+            <p>IDEAS CHANGE THE WORLD</p>
+            <p><button command="show-modal" commandfor="book-dialog" id="add-book">Add Book</button></p>
+                <dialog id="book-dialog">
+                    <form method="dialog">
+        
+                            <p>
+                            <label>
+                                book title
+                            </label>
+                            <input type="text" required>
+                        </p>
+                        <p>
+                            <label> author</label>
+                            <input type="text" required>
+                        </p>
+                        <p>
+                            <label>pages</label>
+                            <input type="number" required>
+                        </p>
+                        <p>
+                            <lead>read:</lead>
+                            
+                        </p>
+                    </form>
+                    <button commandfor="book-dialog" command="close" id="add">Add(+)</button>
+                    <button commandfor="book-dialog" command="close" id="close">cancel</button>     
+ 
+                </dialog>    
+            
+            <div class="collection">
+                <h2>collection</h2>
+                <div class="book-display">
+        
+                    <p><em>Title:</em>Redwall</p>
+                    <p><em>Author:</em>J. Ranchre</p>
+                    <p><em>Pages:</em>344</p>
+                </div>
+                <div class="book-display">
+                   
+                    <p><em>Title:</em>Redwall</p>
+                    <p><em>Author:</em>J. Ranchre</p>
+                    <p><em>Pages:</em>344</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+
+
+
+    <script src="library.js" defer></script>
+</body>
+</html>

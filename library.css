@@ -1,0 +1,161 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+
+/*table,caption,tbody,tfoot,thead,tr,th,td{}  */
+body{
+    background-color:white;
+}
+@font-face {
+    font-family: 'Aktura-Regular';
+    src: url(./Assets/Fonts/Aktura-Regular.woff2);
+}
+
+@font-face {
+    font-family: "PublicSans-Regular";
+    src: url(./Assets/Fonts/PublicSans-Regular.woff2);
+}
+
+@font-face {
+    font-family: "PublicSans-Medium";
+    src: url(./Assets/Fonts/PublicSans-Medium.woff2);
+}
+
+@font-face {
+    font-family: "PublicSans-SemiBold";
+    src: url(./Assets/Fonts/PublicSans-SemiBold.woff2);
+}
+
+@font-face {
+    font-family: "PublicSans-ExtraLigh";
+    src: url(./Assets/Fonts/PublicSans-ExtraLight.woff2);
+}
+
+
+
+#title{
+    font-family: Aktura-Regular;
+}
+.container{
+    min-height:47rem;
+    display:grid;
+    background-image: radial-gradient(rgb(116, 96, 142), rgb(55, 50, 77));
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:1fr 5fr;
+    gap: 15px;
+    text-align:right;
+    padding-right:3rem;
+    
+}
+
+.container h1{
+    font-size: 5rem;
+    
+}
+
+
+.masthead{
+    grid-column: 1 / 3;
+}
+
+
+.left-container{
+    background-image: radial-gradient(rgb(177, 147, 216), rgb(156, 142, 218));
+    color:white;
+    grid-column:1 / 3;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2,1fr);
+    font-family: PublicSans-SemiBold;
+    font-size:2rem;
+
+}
+.left-container > p{
+    padding-right:2rem;
+    text-align:right;
+    margin-top:3rem;
+    grid-column: 2/3;
+}
+
+.left-container #add-book{
+    width: max-content;    
+    grid-column:2/3;
+}
+.book-display{
+    text-align:left;
+    border: 1px solid white;
+    
+}
+
+.collection{
+    grid-row: 1 / 3;
+    display:grid;
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+    font: size 1.2rem;
+    max-width:90%;
+    margin-top:2rem;
+    margin-left:2rem;
+
+}
+.collection h2{
+    font-family:Aktura-Regular;
+    height:min-content;
+    text-align: left;
+
+}
+.collection .book-display{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-image: radial-gradient( rgb(139, 104, 142), rgb(162, 125, 153));
+    height: fit-content;
+    padding:1rem;
+    font-size:1.6rem;
+    font-family:PublicSans-Regular;
+    border:0;
+}
+dialog{
+   border:none;
+   padding:15px;
+   width:20%;
+   font-family:Aktura-Regular;
+   font-size:2rem;
+   
+   
+}
+dialog::backdrop{
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}
+dialog form{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    text-align:center;
+    
+
+    
+}
+
+dialog p{
+}
+
+dialog input{
+    border: 3px solid grey;
+    padding:0.5rem;
+}
+
+#close{
+    align-self:right;
+    background-color: red;
+    color:white;
+    text-align:center;
+    width:max-content;
+}
+
