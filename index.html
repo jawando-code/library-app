@@ -10,53 +10,51 @@
     <div class='container'>
         
         <div class="masthead">
-            <h1 id="title">library</h1>
+            <h1 class="header">library</h1>
 
         </div> 
         <div class="left-container">
             <p>IDEAS CHANGE THE WORLD</p>
-            <p><button command="show-modal" commandfor="book-dialog" id="add-book">Add Book</button></p>
-                <dialog id="book-dialog">
-                    <form method="dialog">
+             <p><button  id="show-dialog">Add Book</button></p>
+                <dialog id="book-dialog" >
+                    <form id="book-form" method="dialog">
         
                             <p>
                             <label>
                                 book title
-                            </label>
-                            <input type="text" required>
-                        </p>
-                        <p>
-                            <label> author</label>
-                            <input type="text" required>
-                        </p>
-                        <p>
-                            <label>pages</label>
-                            <input type="number" required>
-                        </p>
-                        <p>
-                            <lead>read:</lead>
                             
+                            <input type="text" name="title" for="title" id="title"  required>
+                            </label>
                         </p>
+                        <p>
+                            <label> author
+                            <input type="text" name="author"for="author" id="author"  required>
+                        </label>
+                        </p>
+                        <p>
+                            <label>pages
+                            <input type="numbers" name="pages" for="page" id="pages"  required>
+                        </label>
+                        </p>
+                        <!-- <p>
+                           
+                            <input type="checkbox" id="read">
+                            <label for="slider">read:</label>
+                            <div class="slider" data-checked="Yes" data-unchecked="No"></div>
+                            
+                        </p> -->
                     </form>
-                    <button commandfor="book-dialog" command="close" id="add">Add(+)</button>
-                    <button commandfor="book-dialog" command="close" id="close">cancel</button>     
+                    <button type="cancel" id="cancel" value="Cancel" formnovalidate>Cancel</button>
+                    <button type="submit" method="dialog" id="form-close" value="Add Book">Add Book</button>
+
+                    
  
-                </dialog>    
+                </dialog>
+                <p id="demo"></p>
             
             <div class="collection">
                 <h2>collection</h2>
-                <div class="book-display">
-        
-                    <p><em>Title:</em>Redwall</p>
-                    <p><em>Author:</em>J. Ranchre</p>
-                    <p><em>Pages:</em>344</p>
-                </div>
-                <div class="book-display">
-                   
-                    <p><em>Title:</em>Redwall</p>
-                    <p><em>Author:</em>J. Ranchre</p>
-                    <p><em>Pages:</em>344</p>
-                </div>
+                
             </div>
         </div>
     </div>
