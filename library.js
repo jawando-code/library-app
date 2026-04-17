@@ -34,96 +34,121 @@ const dialog = document.getElementById("book-dialog");
 const closeBtn = document.querySelector("#form-close");
 const cancel = document.querySelector("#cancel");
 const collection = document.querySelector('.collection')
-const bookDisplay = document.createElement('div');
+
 const bookForm = document.querySelector("#book-form")
+
+
 
 closeBtn.addEventListener('click',(e)=> {
     e.preventDefault();
     let title = document.getElementById("title")
     let author = document.getElementById('author')
     let pages = document.getElementById('pages')
+    
+    if(
+        (!title.value && !author.value ) ) {
+        alert("Author or Title is required");
+        e.preventDefault();
+    } else {
+
     console.log(`This:${title.value}, ${author.value} and ${pages.value}`)
-    showBook(title.value,author.value,pages.value)
+    showBook(title.value,author.value,pages.value);
+
+ 
+} });
+
+closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    bookForm.reset();
 })
-// function sendValue() {
-    
-//     let title = document.getElementById("title")
-//     let author = document.getElementById('author')
-//     let pages = document.getElementById('pages')
-    
+
+ 
+let digit = 1;
+
+
+function numb() {
+      digit += 1;  
+}
+
+var i = 0;
 function showBook(title,author,pages) {
+
+   
+    bookDisplay = document.createElement("div");
+    bookDisplay.id = "bookDisplay" + "_" + i++;
     
-
-
-    bookDisplay.className = "book-display"
-    bookDisplay.style.display = "grid"
+    const createGridEle = document.createElement("div");
     const createGridEle1 = document.createElement("div");
     const createGridEle2 = document.createElement("div");
     const createGridEle3 = document.createElement("div");
     const createGridEle4 = document.createElement("div");
-
-    createGridEle1.textContent = "Title:";
-    createGridEle2.textContent = "Author:";
-    createGridEle3.textContent  = "Pages:";
-    createGridEle4.textContent = "Read:"
-
-
+    const createGridEleN = document.createElement("div");
     const createGridEle5 = document.createElement("div");
     const createGridEle6 = document.createElement("div");
     const createGridEle7 = document.createElement("div");
     const createGridEle8 = document.createElement("div");
 
+    createGridEle.textContent = "#"
+    createGridEle1.textContent = "Title";
+    createGridEle2.textContent = "Author";
+    createGridEle3.textContent = "Pages";
+    createGridEle4.textContent = "Read";
+
+    createGridEle.style.color = "black";
+    createGridEle1.style.color = "black";
+    createGridEle2.style.color = "black";
+    createGridEle3.style.color = "black";
+    createGridEle4.style.color = "black";
+
+    // createGridEle.style.backgroundColor = "peachpuff";
+    // createGridEle1.style.backgroundColor = "peachpuff";
+    // createGridEle2.style.backgroundColor = "peachpuff";
+    // createGridEle3.style.backgroundColor = "peachpuff";
+    // createGridEle4.style.backgroundColor = "peachpuff";
+
+
+    createGridEleN.textContent = `${digit}`;
     createGridEle5.textContent = `${title}`;
     createGridEle6.textContent = `${author}`;
     createGridEle7.textContent  = `${pages}`
     createGridEle8.textContent = `yes`;
 
-    bookDisplay.append(createGridEle1, createGridEle2, createGridEle3, createGridEle4, createGridEle5,createGridEle6, createGridEle7, createGridEle8);
+    bookDisplay.append(createGridEle,createGridEle1, createGridEle2, createGridEle3, createGridEle4, createGridEleN,createGridEle5,createGridEle6, createGridEle7, createGridEle8);
    collection.append(bookDisplay);
-    
+  
+
 };
+// function newD(){
+//     let newDiv = document.createElement('div');
+//     newDiv.id = "newDiv"+ "_" + i++;
+//     collection.append(newDiv);
+//     console.log(newDiv.id)
+
+// }
+
+// let button = document.querySelector("#button");
+// button.addEventListener("click", newD)
+
+function remove(){
+    collection.removeChild(`bookDisplay${id}`)
+}
+
+function add(){
+    collection.append(bookDisplay)
+}
 
 // dialog.addEventListener("submit", showBook(title,author,pages) );
 
 
+function clear() {
+    title.textContent = '';
+    author.textContent = '';
+    pages.textContent = '';
+}
 
 
 
-
-
-
-// function showBook(title,author,pages) {
-// const collection = document.querySelector('.collection')
-// const bookDisplay = document.createElement('div');
-
-// bookDisplay.className = "book-display"
-// bookDisplay.style.display = "grid"
-// const createGridEle1 = document.createElement("div");
-// const createGridEle2 = document.createElement("div");
-// const createGridEle3 = document.createElement("div");
-// const createGridEle4 = document.createElement("div");
-
-// createGridEle1.textContent = "Title:";
-// createGridEle2.textContent = "Author:";
-// createGridEle3.textContent  = "Pages:";
-// createGridEle4.textContent = "Read:"
-
-
-// const createGridEle5 = document.createElement("div");
-// const createGridEle6 = document.createElement("div");
-// const createGridEle7 = document.createElement("div");
-// const createGridEle8 = document.createElement("div");
-
-// createGridEle5.textContent = `${title}`;
-// createGridEle6.textContent = `${author}`;
-// createGridEle7.textContent  = `${pages}`
-// createGridEle8.textContent = `Yes`;
-
-// bookDisplay.append(createGridEle1, createGridEle2, createGridEle3, createGridEle4, createGridEle5,createGridEle6, createGridEle7, createGridEle8);
-// collection.append(bookDisplay) 
-
-// };
-// }
+closeBtn.addEventListener('click', numb)
 
 showBtn.addEventListener('click', ()=> {
     dialog.showModal();
@@ -148,8 +173,7 @@ closeBtn.addEventListener('click', function(event){
     event.preventDefault();
     if(dialog.returnValue === "submit") return;
     console.log(dialog.returnValue)
-})
-
+});
 
 // function showBook(obj) {
 //     const collection = document.querySelector('.collection')
@@ -194,6 +218,4 @@ function Addvalues(Book) {
 
 let appender = document.querySelector('.appender')
 
-    // appender.addEventListener('click',showBook)
-
-
+    // appender.addEventListener('click',showBook);
