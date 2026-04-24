@@ -15,7 +15,7 @@
         </div> 
         <div class="left-container">
             <p id="banner-msg">Ideas Change The World.</p>
-             <p><button  id="show-dialog" ><img width="100" height="100" src="./Assets/icons/add.svg" alt="add-button"/><br>Add Book</button></p>
+             <p><button  id="show-dialog" ><img width="100" height="100" src="./Assets/icons/add.svg" alt="add-button"/><br>New Book</button></p>
                 <dialog id="book-dialog" >
                     <button type="cancel" id="cancel" value="Cancel" formnovalidate>X</button>
 
@@ -32,13 +32,9 @@
                             <label>Pages</label>
                             <input type="number" name="pages" for="page" id="pages"  required/>
                         </div>
-                        <div class="field">
-                            <label for="slider">read:</label>
-                            <input type="checkbox" id="read">
+
                             
-                            <div class="slider" data-checked="Yes" data-unchecked="No"></div>
-                            
-                        </div>
+                    
                     </form>
                    
                     <button type="submit" method="dialog" id="form-close" value="Add Book">
@@ -52,7 +48,13 @@
             
             <div class="collection">
                 <h2>collection</h2>
-               
+               <div>
+                    <label for="checkbox" class="switch">
+                        <input type="checkbox" id="checkbox"/>
+                        <div class="slider-wrapper">
+                        <div class="slider-round"></div>
+                    </label>
+                </div>
                 
             </div>
         </div>
