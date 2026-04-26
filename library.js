@@ -36,9 +36,7 @@ closeBtn.addEventListener('click',(e)=> {
     let title = document.getElementById("title")
     let author = document.getElementById('author')
     let pages = document.getElementById('pages')
-    let readBook = document.getElementsByName('readBook');
-    let checkValue = document.querySelector('#read')
-    const notRead = document.querySelector("#not-read");
+    
 
 
     
@@ -59,9 +57,7 @@ closeBtn.addEventListener('click',(e)=> {
  
 } });
 
-bookForm.addEventListener("submit", ()=> {
-    notRead.value = checkbox.checked ? "read" : "not-read";
-})
+
 
 closeBtn.addEventListener('click', (e) => {
     e.preventDefault();
