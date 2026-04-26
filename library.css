@@ -184,21 +184,22 @@ body{
 .collection > * .book-display{
     gap:15px;
 }
-#banner-msg{
+.banner-msg{
     font-family: PublicSans-ExtraLight;
     font-size:1.1rem;
     color:white;
     overflow-wrap:break-word;
     text-wrap:balance;
+    padding-top:0.5rem;
+    padding-right:2rem;
 }
 
 
-
-.collection .book-display{
-    
-    
-   
-   
+#delete-button{
+    padding:10px;
+    border-radius: 19px;
+    background-color: rgb(140, 5, 5);
+    color:white;
 }   
 
 [id^="bookDisplay"]{
@@ -212,20 +213,24 @@ body{
     -0.6px 0.8px 1.1px hsl(var(--shadow-color) / 0.09),
     -1.7px 2.4px 3.2px -2.8px hsl(var(--shadow-color) / 0.08);
     display:hidden;
-    grid-template-columns: 0.8fr 3fr 3fr repeat(2, 1fr) 0.5fr;
-    background-image: radial-gradient( rgb(139, 104, 142), rgb(162, 125, 153));
+    grid-template-columns:  3fr 3fr 1.5fr 1fr 0.1fr;
+    grid-template-rows: 0.2fr 1fr;
+    background-image: radial-gradient( rgb(161, 113, 165), rgb(171, 105, 152));
     height: fit-content;
     padding:1rem;
+    margin-bottom:1rem;
     font-size:1.2rem;
     font-family:PublicSans-Regular;
     text-align:left;
-    
-    gap:40px;
+    border-radius: 15px;
+    gap:0.7rem;
     
 
 
 }
-
+#bookNumber{
+   font-size: 2rem;
+}
 .book-display2 .bd-items{
     border: 2px solid rgb(141, 126, 126);
 }
@@ -300,6 +305,16 @@ input:checked + .slider:before{
     width:1.3rem;
     height:1.3rem;
 }
+
+#read{
+    width:4.3rem;
+    height:4.3rem;
+   
+}
+
+#readbook{
+   border-radius:15rem
+}
 .switch input{
     opacity:0;
     width:0;
@@ -371,7 +386,7 @@ input:checked + slider:before{
 #show-dialog{
     grid-column:2 / 3;
     grid-row:1 / 2;
-background-color: rgb(117, 89, 123);
+background-color: rgb(83, 61, 88);
     color:white;
     min-width:4rem;
     border-radius:12px;

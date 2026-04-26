@@ -37,6 +37,10 @@ closeBtn.addEventListener('click',(e)=> {
     let author = document.getElementById('author')
     let pages = document.getElementById('pages')
     let readBook = document.getElementsByName('readBook');
+    let checkValue = document.querySelector('#read')
+    const notRead = document.querySelector("#not-read");
+
+
     
     
 
@@ -49,21 +53,30 @@ closeBtn.addEventListener('click',(e)=> {
 
     console.log(`This:${title.value}, ${author.value}, ${readBook.value} and ${pages.value}`)
     addBookToLibrary(title.value,author.value,pages.value,readBook.value);
-    showBook();
+    
     console.log(mylibrary)
 
  
 } });
 
+bookForm.addEventListener("submit", ()=> {
+    notRead.value = checkbox.checked ? "read" : "not-read";
+})
 
 closeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     bookForm.reset();
+    showBook();
+   
 })
 
  
 let digit = 0;
+let bookNumber = 0;
 
+function reset() {
+    bookNumber = 0;
+}
 
 function numb() {
       digit += 1;  
@@ -72,6 +85,17 @@ let valueName = "Yes";
 var i = 0;
 let radios = document.querySelectorAll("input[name=\"read-book\"]");
 
+function count() {
+  bookNumber = collection.childElementCount -2; 
+    console.log(bookNumber) 
+   return bookNumber;
+}
+
+function reduceCount() {
+    bookNumber = (collection.childElementCount - 2) -1;
+    console.log(bookNumber);
+    return bookNumber;
+}
 
 function showBook() {
     mylibrary.forEach(item => {
@@ -80,58 +104,80 @@ function showBook() {
     bookDisplay = document.createElement("div");
     bookDisplay.id = "bookDisplay" + "_" + i++;
     bookDisplay.dataset.bookId = item.id;
-    bookDisplay.class = "bookDisplayClass"
+    
 
     numb();
-    const createGridEle = document.createElement("div");
-    const createGridEle1 = document.createElement("div");
-    const createGridEle2 = document.createElement("div");
-    const createGridEle3 = document.createElement("div");
-    const createGridEle4 = document.createElement("label");
-    const createGridEleN = document.createElement("div");
-    const createGridEle5 = document.createElement("div");
-    const createGridEle6 = document.createElement("div");
-    const createGridEle7 = document.createElement("div");
-    const createGridEle8 = document.createElement("input");
-    createGridEle8.type = "checkbox";
-    createGridEle8.id = `${checkbox.value}`;
+    
+
+
+    
+    const headerDiv2 = document.createElement("div");
+    const headerDiv3 = document.createElement("div");
+    const headerDiv4 = document.createElement("div");
+    const headerDiv5 = document.createElement("label");
+
+    
+    headerDiv2.textContent = "Title";
+    headerDiv3.textContent = "Author";
+    headerDiv4.textContent = "Pages";
+    headerDiv5.textContent = "Read";
+
+    
+    headerDiv2.style.color = "black";
+    headerDiv3.style.color = "black";
+    headerDiv4.style.color = "black";
+    headerDiv5.style.color = "black";
+
+    
+    const userTitle = document.createElement("div");
+    const userAuthor = document.createElement("div");
+    const userPages = document.createElement("div");
+    const readCheck = document.createElement("input");
+    readCheck.type = "checkbox";
+   
+    readCheck.id = `${checkbox.value}`;
     const createGridEle9 = document.createElement("div");
-    const rmv = document.createElement('button')
+    const delBtn = document.createElement('button')
 
 
-    createGridEle.textContent = "#"
-    createGridEle1.textContent = "Title";
-    createGridEle2.textContent = "Author";
-    createGridEle3.textContent = "Pages";
-    createGridEle4.textContent = "Read";
-
-    createGridEle.style.color = "black";
-    createGridEle1.style.color = "black";
-    createGridEle2.style.color = "black";
-    createGridEle3.style.color = "black";
-    createGridEle4.style.color = "black";
+   
     createGridEle9.style.color = 'red';
 
    
 
-    createGridEleN.textContent = `${digit}`;
-    createGridEle5.textContent = `${item.title}`;
-    createGridEle6.textContent = `${item.author}`;
-    createGridEle7.textContent  = `${item.pages}`
     
-    createGridEle9.textContent = 'Remove';
-    rmv.textContent = 'delete'
-    rmv.classList = "trash"
+    userTitle.textContent = `${item.title}`;
+    userAuthor.textContent = `${item.author}`;
+    userPages.textContent  = `${item.pages}`
     
-
-     
-
+    createGridEle9.textContent = ' ';
+    delBtn.textContent = 'delete'
+    delBtn.id = "delete-button"
+    delBtn.classList = "trash";
 
     
-bookDisplay.append(createGridEle,createGridEle1, createGridEle2, createGridEle3, createGridEle4, createGridEle9, createGridEleN,createGridEle5,createGridEle6, createGridEle7, createGridEle8, rmv);
-   collection.append(bookDisplay);
+   
 
-rmv.addEventListener('click', (e)=> {
+  
+const libraryCount = document.createElement('div');
+libraryCount.textContent =  `${bookNumber}`
+
+let bookNumberDisplay = document.querySelector("#booksIn");
+bookNumberDisplay.textContent = 
+
+
+
+    
+bookDisplay.append(headerDiv2, headerDiv3, headerDiv4, headerDiv5, createGridEle9, userTitle, userAuthor, userPages, readCheck, delBtn);
+bookNumberDisplay.append(++bookNumber)
+collection.append(bookDisplay);
+   
+
+
+
+
+
+delBtn.addEventListener('click', (e)=> {
         const bookD = e.target.closest('[data-book-id]');
         const id = bookD.dataset.bookId;
         console.log(id)
@@ -142,11 +188,23 @@ rmv.addEventListener('click', (e)=> {
         const index = mylibrary.findIndex(item => item.id === id);
         if (index !== -1)mylibrary.splice(index,1);
         if(bookCard){bookCard.remove()};
-    
+        bookNumberDisplay.textContent = '';
+        reset();
+        count();
+        bookNumber
+        bookNumber -1;
+        
+      
+        bookNumberDisplay.append(bookNumber);
+        
+        console.log(bookNumber);
+     
+  
     })
-})  
-} ;
-
+    reset();
+    count();
+    
+    })};
 
 showBook(mylibrary);
 
@@ -201,5 +259,3 @@ function Addvalues(Book) {
 }
 
 let appender = document.querySelector('.appender')
-
-    // appender.addEventListener('click',showBook);
