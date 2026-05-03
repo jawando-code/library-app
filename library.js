@@ -1,257 +1,220 @@
+let myLibrary = [];
+let book1 = addNew("Harry Potter Fever", "J.K Rowling", "345", "Read", "Fiction")
+let book2 = addNew("Tempest", "William Shakespeare", "101", "Not-read", "Fiction")
 
-const mylibrary = [];
-let book1 = addBookToLibrary("LOTR", "J.R. Tolkein", "569",'No');
-let book2 = addBookToLibrary("Eddie Quansa", "Alabi Peacock", "215", 'Yes');
 
-function book(title,author,pages, read,id) {
-   this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read,
+/* Add Books */
+
+function book(title,author,pages,read,type,id){
+
+   this.title = title;
+   this.author = author;
+   this.pages = pages;
+   this.read  = read;
+   this.type = type;
     this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title,author,pages,read) {
-    let a = new book(title, author, pages, read)
-    mylibrary.push(a)
-    return a;
+function addNew(title,author,pages,read,type){
+    let a = new book(title,author,pages,read,type)
+    myLibrary.push(a);
+    return a; 
 }
 
 
-let addBook = document.querySelector(".add");
+/* Forms */
 
-const showBtn = document.getElementById("show-dialog");
-const dialog = document.getElementById("book-dialog");
-const closeBtn = document.querySelector("#form-close");
-const cancel = document.querySelector("#cancel");
-const collection = document.querySelector('.collection')
+let form = document.querySelector("#form");
+let addBookBtn = document.querySelector(".addbook");
+let submit = document.querySelector('#submit');
 
-const bookForm = document.querySelector("#book-form")
-
-
-
-closeBtn.addEventListener('click',(e)=> {
-    e.preventDefault();
-    mylibrary.length = 0;
-    let title = document.getElementById("title")
-    let author = document.getElementById('author')
-    let pages = document.getElementById('pages')
-    
-
-
-    
-    
-
-    
-    if(
-        (!title.value && !author.value ) ) {
-        alert("Author or Title is required");
-        e.preventDefault();
-    } else {
-
-    console.log(`This:${title.value}, ${author.value}, ${readBook.value} and ${pages.value}`)
-    addBookToLibrary(title.value,author.value,pages.value,readBook.value);
-    
-    console.log(mylibrary)
-
- 
-} });
-
-
-
-closeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    bookForm.reset();
-    showBook();
-   
-})
-
- 
-let digit = 0;
-let bookNumber = 0;
-
-function reset() {
-    bookNumber = 0;
-}
-
-function numb() {
-      digit += 1;  
-}
-let valueName = "Yes";
-var i = 0;
-let radios = document.querySelectorAll("input[name=\"read-book\"]");
-
-function count() {
-  bookNumber = collection.childElementCount -2; 
-    console.log(bookNumber) 
-   return bookNumber;
-}
-
-function reduceCount() {
-    bookNumber = (collection.childElementCount - 2) -1;
-    console.log(bookNumber);
-    return bookNumber;
-}
-
-function showBook() {
-    mylibrary.forEach(item => {
-        console.table(item)
-    
-    bookDisplay = document.createElement("div");
-    bookDisplay.id = "bookDisplay" + "_" + i++;
-    bookDisplay.dataset.bookId = item.id;
-    
-
-    numb();
-    
-
-
-    
-    const headerDiv2 = document.createElement("div");
-    const headerDiv3 = document.createElement("div");
-    const headerDiv4 = document.createElement("div");
-    const headerDiv5 = document.createElement("label");
-
-    
-    headerDiv2.textContent = "Title";
-    headerDiv3.textContent = "Author";
-    headerDiv4.textContent = "Pages";
-    headerDiv5.textContent = "Read";
-
-    
-    headerDiv2.style.color = "black";
-    headerDiv3.style.color = "black";
-    headerDiv4.style.color = "black";
-    headerDiv5.style.color = "black";
-
-    
-    const userTitle = document.createElement("div");
-    const userAuthor = document.createElement("div");
-    const userPages = document.createElement("div");
-    const readCheck = document.createElement("input");
-    readCheck.type = "checkbox";
-   
-    readCheck.id = `${checkbox.value}`;
-    const createGridEle9 = document.createElement("div");
-    const delBtn = document.createElement('button')
-
-
-   
-    createGridEle9.style.color = 'red';
-
-   
-
-    
-    userTitle.textContent = `${item.title}`;
-    userAuthor.textContent = `${item.author}`;
-    userPages.textContent  = `${item.pages}`
-    
-    createGridEle9.textContent = ' ';
-    delBtn.textContent = 'delete'
-    delBtn.id = "delete-button"
-    delBtn.classList = "trash";
-
-    
-   
-
-  
-const libraryCount = document.createElement('div');
-libraryCount.textContent =  `${bookNumber}`
-
-let bookNumberDisplay = document.querySelector("#booksIn");
-bookNumberDisplay.textContent = 
-
-
-
-    
-bookDisplay.append(headerDiv2, headerDiv3, headerDiv4, headerDiv5, createGridEle9, userTitle, userAuthor, userPages, readCheck, delBtn);
-bookNumberDisplay.append(++bookNumber)
-collection.append(bookDisplay);
-   
-
-
-
-
-
-delBtn.addEventListener('click', (e)=> {
-        const bookD = e.target.closest('[data-book-id]');
-        const id = bookD.dataset.bookId;
-        console.log(id)
-        const bookCard = document.querySelector(`[data-book-id="${id}"]`);
-        
-
-         
-        const index = mylibrary.findIndex(item => item.id === id);
-        if (index !== -1)mylibrary.splice(index,1);
-        if(bookCard){bookCard.remove()};
-        bookNumberDisplay.textContent = '';
-        reset();
-        count();
-        bookNumber
-        bookNumber -1;
-        
-      
-        bookNumberDisplay.append(bookNumber);
-        
-        console.log(bookNumber);
-     
-  
-    })
-    reset();
-    count();
-    
-    })};
-
-showBook(mylibrary);
-
-
-
-function clear() {
-    title.textContent = '';
-    author.textContent = '';
-    pages.textContent = '';
-}
-
-function remove() {
-    id = this.id;
-    console.log(id)
-}
-
-
-
-showBtn.addEventListener('click', ()=> {
-    dialog.showModal();
-})
-
-closeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    dialog.close();
-})
-
-cancel.addEventListener("click", (e) => {
-    e.preventDefault();
-    dialog.close();
-})
-
-let createBook = function (title,author,pages,read) {
-   return  [title, author,pages, read, crypto.randomUUID()]
-
-}
-
-closeBtn.addEventListener('click', function(event){
-    event.preventDefault();
-    if(dialog.returnValue === "submit") return;
-    console.log(dialog.returnValue)
+addBookBtn.addEventListener("click", (e)=> {
+    toggle();
 });
 
+function toggle() {
+    if(form.className === "hidden") {
+        form.className = "grid"
+        addBookBtn.textContent = "Cancel"
+        addBookBtn.className = "btn-form-opened"
+        
 
-function Addvalues(Book) {
-    Object.values(Book).forEach((value) => {
-        const div = document.createElement('div');
-        div.textContent = value;
-        bookDisplay.appendChild(console.log(div));
-    })
-   
+    } else if(form.className === "grid") {
+        form.className = "hidden";
+        addBookBtn.textContent = "Add Book";
+        addBookBtn.className = "btn-closed";
+        
+    }
 }
 
-let appender = document.querySelector('.appender')
+
+
+function getRadioValue() {
+    const radios = document.getElementsByName('type');
+    let selectedValue = "";
+    for(let i = 0;i < radios.length; i++){
+        if(radios[i].checked){
+            selectedValue = radios[i].value;
+            break;
+
+        }
+        
+    }
+    console.log(selectedValue)
+    type =  selectedValue;
+    return selectedValue;
+} 
+
+
+
+
+let slider = document.querySelector(".slider")
+let checkboxInput = document.querySelector('#read')
+let readValue = document.querySelector('#readvalue');
+
+
+let read = 'Unread';
+function checkRead() {
+  
+    if(readValue.textContent === "Read"){
+        readValue.textContent = "Unread"
+     
+        
+        console.log("Unread")
+        read = "Unread";
+        return "Unread"
+    }
+ else if(readValue.textContent === "Unread"){
+    readValue.textContent = "Read";
+   
+    
+    console.log("Read")
+    
+    read = "Read"
+    return "Read"
+    
+}
+};
+
+checkboxInput.addEventListener("click",checkRead)
+
+
+
+let type;
+let selectedValue = '';
+
+submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    getRadioValue();
+    myLibrary.length = 0;
+    
+   
+    title = document.getElementById('title');
+    author = document.getElementById('author');
+    pages = document.getElementById('pages');
+    read;
+    type;
+    id  = crypto.randomUUID();
+
+    console.log(title.value,author.value,pages.value,read,type,id)
+   let newBook = addNew(title.value,author.value,pages.value,read,type,id)
+   
+
+   toggle();
+   
+   form.reset();
+   showBook(newBook);
+
+}
+)
+
+/* Display Books */
+
+
+
+let mainContainer = document.querySelector('.library')
+let i = 0;
+function showBook() {
+    myLibrary.forEach(item => {
+        
+        let bookDisplay = document.createElement('div')
+       
+        bookDisplay.id = "bookDisplay" + "_" + i++;
+        bookDisplay.dataset.bookId = item.id;
+        
+        let titleHead = document.createElement('div')
+        titleHead.textContent = "Title"
+        let showTitle = document.createElement("div");
+        showTitle.textContent = item.title;
+
+        let authorHead = document.createElement('div')
+        authorHead.textContent = "Author"
+        let showAuthor = document.createElement("div");
+        showAuthor.textContent = item.author;
+
+        let pageHead = document.createElement("div")
+        pageHead.textContent = "Pages"
+        let showPage = document.createElement('div');
+        showPage.textContent = item.pages;
+
+        let readHead = document.createElement('div')
+        readHead.textContent = "Status"
+        let showRead = document.createElement('div');
+        showRead.textContent = item.read;
+
+        let typeHead = document.createElement("div")
+        typeHead.textContent = "Type"
+        let showType = document.createElement('div')
+        showType.textContent = item.type;
+
+        let cancel = document.createElement('div')
+        cancel.textContent = "Remove";
+        
+        let dele = document.createElement('button')
+        dele.textContent = "delete";
+        dele.className = "dele"
+
+        bookDisplay.append(titleHead,authorHead, pageHead, readHead, typeHead, dele, showTitle, showAuthor,showPage,showRead, showType);
+        mainContainer.append(bookDisplay)
+
+        console.log(mainContainer)
+
+    }
+    ) 
+}
+showBook(myLibrary);
+
+let deleteBtn = document.querySelectorAll('.dele');
+deleteBtn.forEach( (deleteBtn)=> {
+    deleteBtn.addEventListener('click', (e) => {
+    const bookD = e.target.closest('[data-book-id]');
+    const id =  bookD.dataset.bookId;
+    const bookSelect = document.querySelector(`[data-book-id="${id}"]`);
+
+    const index = myLibrary.findIndex(item => item.id === id)
+    promptMessage();
+    
+    
+    function promptMessage() {
+    console.log("Delete Book?")
+   
+    let a = confirm("Are you sure you want to delete this book?");
+
+    if(a === true){
+        console.log("Yes. Book removed from Library.")
+        if(index !== -1)myLibrary.splice(index,1);
+        if(bookSelect){bookSelect.remove()};
+
+        
+
+    } else {
+        console.log("No.")
+    }
+    
+    }
+})
+
+
+})
+
+
